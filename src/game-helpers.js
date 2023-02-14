@@ -1,10 +1,13 @@
 export function checkGuess(guess, answer) {
+  const answerChars = answer.split('');
+  let guessChars = guess.toUpperCase().split('');
+
   if (!guess) {
-    return null;
+    guessChars = ['','','','',''];
   }
 
-  const guessChars = guess.toUpperCase().split('');
-  const answerChars = answer.split('');
+
+
 
   return guessChars.map((guessChar, index) => {
     const answerChar = answerChars[index];
@@ -14,10 +17,13 @@ export function checkGuess(guess, answer) {
       status = 'correct';
     } else if (answerChars.includes(guessChar)) {
       status = 'misplaced';
-    } else {
+    } else if(guessChar === '') {
+      status = ''
+    }else {
       status = 'incorrect';
     }
     return {
+      key: Math.random(),
       letter: guessChar,
       status,
     };

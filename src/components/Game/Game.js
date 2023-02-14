@@ -34,7 +34,7 @@ function Game() {
     setCount(count + 1)
   }
   return (<>
-    <GuessResults guesses={guesses}/>
+    <GuessResults guesses={guesses} answer={answer}/>
     <GuessInput onAddGuess={addGuess} disabled={count >= NUM_OF_GUESSES_ALLOWED}/>
   </>);
 }
