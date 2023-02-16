@@ -5,6 +5,9 @@ function GuessInput({onAddGuess, disabled}) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(guess.length < 5) {
+      return;
+    }
     setGuess('')
     onAddGuess(guess)
   }
@@ -12,6 +15,7 @@ function GuessInput({onAddGuess, disabled}) {
   return (
       <form className="guess-input-wrapper" onSubmit={handleSubmit}>
         <label htmlFor="guess-input">Enter guess:</label>
+
         <input id="guess-input"
                type="text"
                minLength={5}
